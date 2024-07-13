@@ -203,6 +203,7 @@ class PlaneLabeler(N3dComponent):
 
         # on release
         layer._block_saving = False
-        undo_item = layer._undo_history[-1]
-        if len(undo_item) == 1 and len(undo_item[0][0][0]) == 0:
-            layer._undo_history.pop()
+        if layer._undo_history:
+            undo_item = layer._undo_history[-1]
+            if len(undo_item) == 1 and len(undo_item[0][0][0]) == 0:
+                layer._undo_history.pop()
